@@ -6,7 +6,6 @@ const postSchema = new Schema({
   title: String,
   message: String,
   author: String,
-  tags: [String],
   selectedFile: String,
   likeCount: {
     type: Number,

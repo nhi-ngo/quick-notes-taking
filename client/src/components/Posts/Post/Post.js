@@ -1,11 +1,18 @@
 import React from 'react';
 import { Card, CardMedia, CardContent, CardActions, Button } from '@material-ui/core';
 import moment from 'moment';
+import { useDispatch } from 'react-redux';
 
+import { deletePost } from '../../../actions/posts';
 import useStyles from './styles';
 
-export default function Post({ post }) {
+export default function Post({ post, setCurrentId }) {
   const classes = useStyles();
+  const dispatch = useDispatch();
+
+  const onPostDelete = () => {
+    dispatch(deletePost(post._id));
+  };
 
   return (
     <Card className={classes.card}>
@@ -17,20 +24,17 @@ export default function Post({ post }) {
       </div>
 
       <div className={classes.overlay2}>
-        <Button onClick={() => console.log('click')}>Edit</Button>
-      </div>
-
-      <div>
-        {post.tags.map((tag) => `#${tag} `)}
+        <Button onClick={() => setCurrentId(post._id)}>Edit</Button>
       </div>
 
       <CardContent>
         <h2>{post.title}</h2>
+        <p>{post.message}</p>
       </CardContent>
 
       <CardActions className={classes.cardActions}>
         <Button size="small" color="primary">Like {post.likeCount}</Button>
-        <Button size="small" color="primary">Delete</Button>
+        <Button size="small" color="primary" onClick={onPostDelete}>Delete</Button>
       </CardActions>
     </Card>
   );

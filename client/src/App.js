@@ -9,12 +9,13 @@ import notes from './images/notes.png';
 import useStyles from './styles';
 
 export default function App() {
-  const classes = useStyles();
+  const [currentId, setCurrentId] = useState(0);
   const dispatch = useDispatch();
+  const classes = useStyles();
 
   useEffect(() => {
     dispatch(getPosts());
-  }, []);
+  }, [currentId]);
 
   return (
     <Container maxWidth="lg">
@@ -29,11 +30,11 @@ export default function App() {
         <Container>
           <Grid container justify="space-between" alignItems="stretch" spacing={3}>
             <Grid item xs={12} sm={7}>
-              <Posts />
+              <Posts setCurrentId={setCurrentId} />
             </Grid>
 
             <Grid item xs={12} sm={4}>
-              <Form />
+              <Form currentId={currentId} setCurrentId={setCurrentId} />
             </Grid>
           </Grid>
         </Container>

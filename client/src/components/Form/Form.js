@@ -1,21 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TextField, Button, Typography, Paper } from '@material-ui/core';
 import FileBase from 'react-file-base64';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { createPost } from '../../actions/posts';
+import { createPost, updatePost } from '../../actions/posts';
 import useStyles from './styles';
 
-export default function Form() {
-  const [postData, setPostData] = useState({});
-
-  const classes = useStyles();
+export default function Form({ currentId, setCurrentId }) {
+  const [postData, setPostData] = useState({ author: '', title: '', message: '', selectedFile: '' });
+  const post = useSelector((state) => (currentId ? state.posts.find((content) => content._id === currentId) : null));
   const dispatch = useDispatch();
+  const classes = useStyles();
+
+  useEffect(() => {
+    if (post) setPostData(post);
+  }, [post]);
 
   const onFormSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(createPost(postData));
+    if (currentId) {
+      dispatch(updatePost(currentId, postData));
+    } else {
+      dispatch(createPost(postData));
+    }
+
+    onFormClear();
   };
 
   const onInputChange = (e) => {
@@ -25,18 +35,19 @@ export default function Form() {
     }));
   };
 
-  const onButtonClear = () => {
-
+  const onFormClear = () => {
+    setCurrentId(0);
+    setPostData({ author: '', title: '', message: '', tags: '', selectedFile: '' });
   };
 
   return (
     <Paper className={classes.paper}>
       <form autoComplete="off" className={`${classes.form} ${classes.root}`} onSubmit={onFormSubmit}>
-        <Typography variant="h6">Creating a note</Typography>
+        <Typography variant="h6">{currentId ? 'Editing' : 'Creating'} a Note</Typography>
 
         <TextField
           name="author"
-          label="author"
+          label="Author"
           variant="outlined"
           fullWidth
           value={postData.author}
@@ -44,7 +55,7 @@ export default function Form() {
         />
         <TextField
           name="title"
-          label="title"
+          label="Title"
           variant="outlined"
           fullWidth
           value={postData.title}
@@ -52,18 +63,10 @@ export default function Form() {
         />
         <TextField
           name="message"
-          label="message"
+          label="Message"
           variant="outlined"
           fullWidth
           value={postData.message}
-          onChange={onInputChange}
-        />
-        <TextField
-          name="tags"
-          label="tags"
-          variant="outlined"
-          fullWidth
-          value={postData.tags}
           onChange={onInputChange}
         />
 
@@ -76,7 +79,8 @@ export default function Form() {
         </div>
 
         <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>
-        <Button variant="contained" color="secondary" size="small" fullWidth onClick={onButtonClear}>Clear</Button>
+
+        <Button variant="contained" color="secondary" size="small" fullWidth onClick={onFormClear}>Clear</Button>
       </form>
     </Paper>
   );

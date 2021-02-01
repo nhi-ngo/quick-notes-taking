@@ -4,8 +4,8 @@ module.exports = {
     es6: true,
   },
   extends: [
-    'plugin:react/recommended',
     'airbnb',
+    'plugin:react/recommended',
   ],
   globals: {
     Atomics: 'readonly',
@@ -23,6 +23,7 @@ module.exports = {
     'react',
   ],
   rules: {
+    'no-use-before-define': 0,
     'import/extensions': 0,
     'react/prop-types': 0,
     'linebreak-style': 0,
