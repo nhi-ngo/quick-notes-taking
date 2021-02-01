@@ -3,7 +3,7 @@ import { Card, CardMedia, CardContent, CardActions, Button } from '@material-ui/
 import moment from 'moment';
 import { useDispatch } from 'react-redux';
 
-import { deletePost } from '../../../actions/posts';
+import { deletePost, likePost } from '../../../actions/posts';
 import useStyles from './styles';
 
 export default function Post({ post, setCurrentId }) {
@@ -12,6 +12,10 @@ export default function Post({ post, setCurrentId }) {
 
   const onPostDelete = () => {
     dispatch(deletePost(post._id));
+  };
+
+  const onPostLike = () => {
+    dispatch(likePost(post._id));
   };
 
   return (
@@ -33,7 +37,7 @@ export default function Post({ post, setCurrentId }) {
       </CardContent>
 
       <CardActions className={classes.cardActions}>
-        <Button size="small" color="primary">Like {post.likeCount}</Button>
+        <Button size="small" color="primary" onClick={onPostLike}>Like {post.likeCount}</Button>
         <Button size="small" color="primary" onClick={onPostDelete}>Delete</Button>
       </CardActions>
     </Card>
