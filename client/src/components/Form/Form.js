@@ -19,6 +19,11 @@ export default function Form({ currentId, setCurrentId }) {
   const onFormSubmit = (e) => {
     e.preventDefault();
 
+    // validate form
+    if (!postData) {
+      return;
+    }
+
     if (currentId) {
       dispatch(updatePost(currentId, postData));
     } else {
@@ -80,7 +85,7 @@ export default function Form({ currentId, setCurrentId }) {
 
         <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>
 
-        <Button variant="contained" color="secondary" size="small" fullWidth onClick={onFormClear}>Clear</Button>
+        <Button variant="contained" color="secondary" size="large" fullWidth onClick={onFormClear}>Clear</Button>
       </form>
     </Paper>
   );
