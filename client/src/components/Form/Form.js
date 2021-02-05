@@ -42,7 +42,7 @@ export default function Form({ currentId, setCurrentId }) {
 
   const onFormClear = () => {
     setCurrentId(0);
-    setPostData({ author: '', title: '', message: '', tags: '', selectedFile: '' });
+    setPostData({ author: '', title: '', message: '', selectedFile: '' });
   };
 
   return (
