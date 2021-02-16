@@ -57,6 +57,7 @@ export default function Form({ currentId, setCurrentId }) {
           fullWidth
           value={postData.author}
           onChange={onInputChange}
+          required
         />
         <TextField
           name="title"
@@ -65,14 +66,18 @@ export default function Form({ currentId, setCurrentId }) {
           fullWidth
           value={postData.title}
           onChange={onInputChange}
+          required
         />
         <TextField
           name="message"
           label="Message"
           variant="outlined"
           fullWidth
+          multiline
+          rows={4}
           value={postData.message}
           onChange={onInputChange}
+          required
         />
 
         <div className={classes.fileInput}>
