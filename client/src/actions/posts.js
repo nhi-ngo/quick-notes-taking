@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import * as api from '../api';
 import { FETCH_POSTS, CREATE_POST, UPDATE_POST, DELETE_POST } from '../constants/actionTypes';
 
