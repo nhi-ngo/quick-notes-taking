@@ -1,6 +1,6 @@
-## [**Quick-Notes-Taking**](https://quick-notes-taking.netlify.app/)
+# **Quick-Notes-Taking**
 
-### Quick-Notes is a simple social media MERN application that allows users to capture quick thoughts that they come across in order to revisit later.
+### Quick-Notes application allows users to capture quick thoughts that they come across in order to revisit later.
 
 <table>
   <tr>
@@ -16,7 +16,7 @@
 **[See it live!](https://quick-notes-taking.netlify.app/)**
 
 
-# **API**
+# **Server**
 This app works in conjunction with a backend server: https://quick-notes-taking.herokuapp.com/posts
 
 # **Tech**
@@ -28,4 +28,3 @@ This app works in conjunction with a backend server: https://quick-notes-taking.
 # **Features**
 - Create/Edit/Update/Delete a note
 - Upload an image from local computer
-- React to a note with a like icon
