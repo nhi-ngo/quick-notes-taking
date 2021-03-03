@@ -1,14 +1,14 @@
-# **Quick-Notes-Taking**
+# **Quick Notes**
 
 ### Quick-Notes application allows users to capture quick thoughts that they come across in order to revisit later.
 
 <table>
   <tr>
       <td vlign="center">
-        <img src="client/public/notes2.png" alt="notes2">
+        <img src="client/public/notes1.png" alt="notes1">
       </td>
       <td vlign="center">
-        <img src="client/public/notes1.png" alt="notes1">
+        <img src="client/public/notes2.png" alt="notes2">
       </td>
     </tr>
 </table>
