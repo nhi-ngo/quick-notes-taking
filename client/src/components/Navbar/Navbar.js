@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, AppBar, Typography, Toolbar, Avatar, Button } from '@material-ui/core';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import notes from '../../images/notes.png';
 import useStyles from './styles';
@@ -13,7 +13,6 @@ const Navbar = () => {
 	const classes = useStyles();
 
 	const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
-	console.log(user);
 
 	const logout = () => {
 		dispatch({ type: LOGOUT });
@@ -39,11 +38,11 @@ const Navbar = () => {
 				<Toolbar className={classes.toolbar}>
 					{user ? (
 						<div className={classes.profile}>
-							<Avatar className={classes.purple} alt={user?.name} src={user?.image}>
+							<Avatar className={classes.purple} alt={user?.userInfo?.name} src={user?.userInfo?.image}>
 								{user?.name?.charAt(0)}
 							</Avatar>
 							<Typography className={classes.userName} variant='h6'>
-								{user?.name}
+								{user?.userInfo?.name}
 							</Typography>
 							<Button variant='contained' className={classes.logout} color='secondary' onClick={logout}>
 								Logout

@@ -5,6 +5,7 @@ const { Schema } = mongoose;
 const postSchema = new Schema({
   title: String,
   message: String,
+  name: String,
   author: String,
   selectedFile: String,
   // likeCount: {

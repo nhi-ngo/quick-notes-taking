@@ -51,9 +51,13 @@ const SignIn = () => {
 		signInWithPopup(auth, provider)
 			.then((result) => {
 				const userData = {
-					name: result.user.displayName,
-					email: result.user.email,
-					img: result.user.photoURL,
+					userInfo: {
+						name: result.user.displayName,
+						email: result.user.email,
+						img: result.user.photoURL,
+            googleUserId: result.user.uid
+					},
+					token: result.user.accessToken,
 				};
 
 				dispatch({ type: AUTH, data: userData });
