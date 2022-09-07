@@ -1,16 +1,15 @@
+import { Avatar, Button, Container, Grid, Paper, Typography } from '@material-ui/core';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import { signInWithPopup } from 'firebase/auth';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { Avatar, Button, Paper, Grid, Typography, Container } from '@material-ui/core';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import { signInWithPopup } from 'firebase/auth';
-import axios from 'axios';
-import { AUTH } from '../../constants/actionTypes';
-import Icon from './icon';
 import { signin, signup } from '../../actions/auth';
-import useStyles from './styles';
-import Input from './Input';
+import { AUTH } from '../../constants/actionTypes';
 import { auth, provider } from '../../firebase';
+import Icon from './icon';
+import Input from './Input';
+import useStyles from './styles';
 
 const initialState = {
 	firstName: '',
