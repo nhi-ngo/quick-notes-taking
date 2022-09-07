@@ -26,6 +26,7 @@ app.use(cookieParser());
 app.use(express.json());
 app.use('/api/posts', postRoutes);
 app.use('/api/auth', authRoutes);
+app.get('/', (req, res) => res.send('Hello to Notes API'));
 
 app.use((err, req, res, next) => {
 	const status = err.status || 500;
