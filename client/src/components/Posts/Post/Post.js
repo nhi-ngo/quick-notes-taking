@@ -1,9 +1,9 @@
 /* eslint-disable no-underscore-dangle */
-import React from 'react';
-import { Card, CardMedia, CardContent, CardActions, Button, Typography, IconButton } from '@material-ui/core';
+import { Button, Card, CardActions, CardContent, CardMedia, IconButton, Typography } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import moment from 'moment';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 
 import { deletePost } from '../../../actions/posts';
@@ -49,8 +49,6 @@ export default function Post({ post, setCurrentId }) {
 			</CardContent>
 
 			<CardActions className={classes.cardActions}>
-				{/* <Button size="small" color="primary" onClick={() => dispatch(likePost(post._id))}><ThumbUpAltIcon fontSize="small" />Like {post.likeCount}</Button> */}
-
 				{(user?.userInfo?._id === post?.author || user?.userInfo?.googleUserId === post?.author) && (
 					<Button size='small' color='secondary' onClick={() => dispatch(deletePost(post._id))}>
 						<DeleteIcon fontSize='small' /> Delete

@@ -25,7 +25,6 @@ export default function Form({ currentId, setCurrentId }) {
 	const onFormSubmit = (e) => {
 		e.preventDefault();
 
-		// validate form
 		if (!postData) {
 			return;
 		}
@@ -63,15 +62,6 @@ export default function Form({ currentId, setCurrentId }) {
 			<form autoComplete='off' className={`${classes.form} ${classes.root}`} onSubmit={onFormSubmit}>
 				<Typography variant='h6'>{currentId ? 'Editing' : 'Creating'} a Note</Typography>
 
-				{/* <TextField
-          name="author"
-          label="Author"
-          variant="outlined"
-          fullWidth
-          value={postData.author}
-          onChange={onInputChange}
-          required
-        /> */}
 				<TextField
 					name='title'
 					label='Title'

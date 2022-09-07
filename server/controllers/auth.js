@@ -36,6 +36,7 @@ export const signin = async (req, res) => {
 
 		res.status(200).json({ userInfo, token });
 	} catch (err) {
+    console.log(err);
 		next(err);
 	}
 };

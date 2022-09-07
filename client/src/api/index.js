@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // const url = 'https://quick-notes-taking.herokuapp.com/posts';
-const API = axios.create({ baseURL: 'http://localhost:5000/api' });
+const API = axios.create({ baseURL: 'http://localhost:5000' });
 
 API.interceptors.request.use((req) => {
 	if (localStorage.getItem('profile')) {
@@ -10,11 +10,11 @@ API.interceptors.request.use((req) => {
 	return req;
 });
 
-export const fetchPosts = () => API.get('/posts');
-export const createPost = (newPost) => API.post('/posts', newPost);
-export const likePost = (id) => API.patch(`/posts/${id}/likePost`);
-export const updatePost = (id, updatedPost) => API.patch(`/posts/${id}`, updatedPost);
-export const deletePost = (id) => API.delete(`/posts/${id}`);
+export const fetchPosts = () => API.get('/api/posts');
+export const createPost = (newPost) => API.post('/api/posts', newPost);
+export const likePost = (id) => API.patch(`/api/posts/${id}/likePost`);
+export const updatePost = (id, updatedPost) => API.patch(`api/posts/${id}`, updatedPost);
+export const deletePost = (id) => API.delete(`/api/posts/${id}`);
 
-export const signIn = (formData) => API.post('/auth/signin', formData);
-export const signUp = (formData) => API.post('/auth/signup', formData);
+export const signIn = (formData) => API.post('/api/auth/signin', formData);
+export const signUp = (formData) => API.post('/api/auth/signup', formData);
