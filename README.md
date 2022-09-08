@@ -13,7 +13,7 @@
     </tr>
 </table>
 
-**[See it live!](https://quick-notes-taking.netlify.app/)**
+**[See it live!](https://quick-notes-client.netlify.app/)**
 
 
 # **Server**
@@ -28,3 +28,4 @@ This app works in conjunction with a backend server: https://quick-notes-taking.
 # **Features**
 - Create/Edit/Update/Delete a note
 - Upload an image from local computer
+- Log in using Google email account
