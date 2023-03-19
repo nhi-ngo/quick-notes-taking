@@ -5,11 +5,9 @@ import { FETCH_POSTS, CREATE_POST, UPDATE_POST, DELETE_POST } from '../constants
 export const getPosts = () => async (dispatch) => {
   try {
     const response = await api.fetchPosts();
-    console.log('response getPosts: ', response);
 
     dispatch({ type: FETCH_POSTS, payload: response.data });
   } catch (error) {
-    console.log('error getPosts: ', error);
     console.log(error);
   }
 };
