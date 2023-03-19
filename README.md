@@ -17,7 +17,7 @@
 
 
 # **Server**
-This app works in conjunction with a backend server: https://quick-notes-taking-api.herokuapp.com
+This app works in conjunction with a backend server: https://quik-notes-api.herokuapp.com/
 
 # **Tech**
 - React
