@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useState, useEffect } from 'react';
 import { TextField, Button, Typography, Paper } from '@material-ui/core';
-import FileBase from 'react-file-base64';
+// import FileBase from 'react-file-base64';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { createPost, updatePost } from '../../actions/posts';
@@ -18,7 +18,7 @@ export default function Form({ currentId, setCurrentId }) {
 		if (post) setPostData(post);
 	}, [post]);
 
-  const onFormClear = () => {
+	const onFormClear = () => {
 		setCurrentId(0);
 		setPostData({ title: '', message: '', selectedFile: '' });
 	};
@@ -45,8 +45,6 @@ export default function Form({ currentId, setCurrentId }) {
 			[e.target.name]: e.target.value,
 		}));
 	};
-
-
 
 	if (!user?.userInfo?.name) {
 		return (
@@ -85,11 +83,11 @@ export default function Form({ currentId, setCurrentId }) {
 				/>
 
 				<div className={classes.fileInput}>
-					<FileBase
+					{/* <FileBase
 						type='file'
 						multiple={false}
 						onDone={(file) => setPostData({ ...postData, selectedFile: file.base64 })}
-					/>
+					/> */}
 				</div>
 
 				<Button
@@ -98,7 +96,8 @@ export default function Form({ currentId, setCurrentId }) {
 					color='primary'
 					size='large'
 					type='submit'
-					fullWidth>
+					fullWidth
+				>
 					Submit
 				</Button>
 

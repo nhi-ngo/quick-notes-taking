@@ -1,4 +1,4 @@
-import { AUTH } from '../constants/actionTypes';
+import { AUTH } from '../constants/actionTypes.jsx';
 // eslint-disable-next-line import/extensions
 import * as api from '../api/index.js';
 
