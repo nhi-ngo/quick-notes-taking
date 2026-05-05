@@ -37,11 +37,11 @@ const SignIn = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-		if (isSignup) {
-			dispatch(signup(form, history));
-		} else {
-			dispatch(signin(form, history));
-		}
+		// if (isSignup) {
+		// 	dispatch(signup(form, history));
+		// } else {
+		// 	dispatch(signin(form, history));
+		// }
 	};
 
 	const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
@@ -54,7 +54,7 @@ const SignIn = () => {
 						name: result.user.displayName,
 						email: result.user.email,
 						img: result.user.photoURL,
-            googleUserId: result.user.uid
+						googleUserId: result.user.uid,
 					},
 					token: result.user.accessToken,
 				};
@@ -106,11 +106,12 @@ const SignIn = () => {
 						fullWidth
 						onClick={signInWithGoogle}
 						startIcon={<Icon />}
-						variant='contained'>
+						variant='contained'
+					>
 						Google Sign In
 					</Button>
 
-					<Grid container justify='flex-end'>
+					<Grid container justifyContent='flex-end'>
 						<Grid item>
 							<Button onClick={switchMode}>
 								{isSignup ? 'Already have an account? Sign in' : "Don't have an account? Sign Up"}

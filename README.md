@@ -1,6 +1,6 @@
 # **Quick Notes**
 
-### Quick-Notes application allows users to capture quick thoughts that they come across in order to revisit later.
+### Quick-Notes application allows users to capture quick thoughts that they come across in order to revisit later
 
 <table>
   <tr>
@@ -15,17 +15,21 @@
 
 **[See it live!](https://quick-notes-client.netlify.app/)**
 
-
 # **Server**
+
 This app works in conjunction with a backend server: https://quik-notes-api.herokuapp.com/
 
 # **Tech**
+
 - React
 - MongoDB
 - Express
 - Node
 
 # **Features**
+
+# **Features**
+
 - Create/Edit/Update/Delete a note
 - Upload an image from local computer
 - Log in using Google email account

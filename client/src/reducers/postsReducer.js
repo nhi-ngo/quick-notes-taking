@@ -2,7 +2,7 @@
 import { FETCH_POSTS, CREATE_POST, UPDATE_POST, DELETE_POST } from '../constants/actionTypes';
 
 export default (posts = [], action) => {
-  switch (action.type) {
+	switch (action.type) {
 		case FETCH_POSTS:
 			return action.payload;
 		case CREATE_POST:

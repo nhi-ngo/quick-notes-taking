@@ -46,15 +46,15 @@ export default function Form({ currentId, setCurrentId }) {
 		}));
 	};
 
-	if (!user?.userInfo?.name) {
-		return (
-			<Paper className={classes.paper}>
-				<Typography variant='h6' align='center'>
-					Please Sign In to create your notes.
-				</Typography>
-			</Paper>
-		);
-	}
+	// if (!user?.userInfo?.name) {
+	// 	return (
+	// 		<Paper className={classes.paper}>
+	// 			<Typography variant='h6' align='center'>
+	// 				Please Sign In to create your notes.
+	// 			</Typography>
+	// 		</Paper>
+	// 	);
+	// }
 
 	return (
 		<Paper className={classes.paper}>

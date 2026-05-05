@@ -1,14 +1,13 @@
-import { legacy_createStore as createStore, applyMiddleware } from 'redux';
+import { legacy_createStore as createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 
-const initialState = {};
+import postsReducer from '../reducers/postsReducer';
+import authReducer from '../reducers/authReducer';
 
-const rootReducer = (state = initialState, action) => {
-	switch (action.type) {
-		default:
-			return state;
-	}
-};
+const rootReducer = combineReducers({
+	posts: postsReducer,
+	auth: authReducer,
+});
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
