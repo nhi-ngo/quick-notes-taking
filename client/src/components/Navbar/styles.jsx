@@ -1,4 +1,4 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 
 export default makeStyles((theme) => ({
 	appBar: {
@@ -16,13 +16,13 @@ export default makeStyles((theme) => ({
 		marginTop: '-15px',
 		textDecoration: 'none',
 
-		[theme.breakpoints.down('md')]: {
-			fontSize: '3rem',
-		},
+		// [theme.breakpoints.down('md')]: {
+		// 	fontSize: '3rem',
+		// },
 
-		[theme.breakpoints.down('sm')]: {
-			fontSize: '2.5rem',
-		},
+		// [theme.breakpoints.down('sm')]: {
+		// 	fontSize: '2.5rem',
+		// },
 	},
 	image: {
 		marginLeft: '15px',
@@ -46,9 +46,9 @@ export default makeStyles((theme) => ({
 		display: 'flex',
 		alignItems: 'center',
 	},
-	[theme.breakpoints.down('sm')]: {
-		mainContainer: {
-			flexDirection: 'column-reverse',
-		},
-	},
+	// [theme.breakpoints.down('sm')]: {
+	// 	mainContainer: {
+	// 		flexDirection: 'column-reverse',
+	// 	},
+	// },
 }));

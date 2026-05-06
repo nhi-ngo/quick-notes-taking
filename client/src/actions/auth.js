@@ -1,5 +1,4 @@
 import { AUTH } from '../constants/actionTypes.jsx';
-// eslint-disable-next-line import/extensions
 import * as api from '../api/index.js';
 
 export const signin = (formData, router) => async (dispatch) => {

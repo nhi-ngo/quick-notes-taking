@@ -1,7 +1,6 @@
-/* eslint-disable no-underscore-dangle */
-import { Button, Card, CardActions, CardContent, CardMedia, IconButton, Typography } from '@material-ui/core';
-import DeleteIcon from '@material-ui/icons/Delete';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+import { Button, Card, CardActions, CardContent, CardMedia, IconButton, Typography } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 import moment from 'moment';
 import React from 'react';
 import { useDispatch } from 'react-redux';

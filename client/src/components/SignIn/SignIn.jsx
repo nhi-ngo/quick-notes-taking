@@ -1,5 +1,5 @@
-import { Avatar, Button, Container, Grid, Paper, Typography } from '@material-ui/core';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import { Avatar, Button, Container, Grid, Paper, Typography } from '@mui/material';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { signInWithPopup } from 'firebase/auth';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -37,11 +37,11 @@ const SignIn = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-		// if (isSignup) {
-		// 	dispatch(signup(form, history));
-		// } else {
-		// 	dispatch(signin(form, history));
-		// }
+		if (isSignup) {
+			dispatch(signup(form, history));
+		} else {
+			dispatch(signin(form, history));
+		}
 	};
 
 	const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
@@ -70,9 +70,7 @@ const SignIn = () => {
 	return (
 		<Container component='main' maxWidth='xs'>
 			<Paper className={classes.paper} elevation={3}>
-				<Avatar className={classes.avatar}>
-					<LockOutlinedIcon />
-				</Avatar>
+				<Avatar className={classes.avatar}>{/* <LockOutlinedIcon /> */}</Avatar>
 
 				<Typography component='h1' variant='h5'>
 					{isSignup ? 'Sign up' : 'Sign in'}

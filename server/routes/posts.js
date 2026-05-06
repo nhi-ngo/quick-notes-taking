@@ -6,11 +6,8 @@ import { verifyToken } from '../verifyToken.js';
 const router = express.Router();
 
 router.get('/', getPosts);
-// router.post('/', verifyToken, createPost);
-// router.patch('/:id', verifyToken, updatePost);
-// router.delete('/:id', verifyToken, deletePost);
-router.post('/', createPost);
-router.patch('/:id', updatePost);
-router.delete('/:id', deletePost);
+router.post('/', verifyToken, createPost);
+router.patch('/:id', verifyToken, updatePost);
+router.delete('/:id', verifyToken, deletePost);
 
 export default router;
