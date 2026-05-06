@@ -1,7 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useState, useEffect } from 'react';
 import { TextField, Button, Typography, Paper } from '@mui/material';
-// import FileBase from 'react-file-base64';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { createPost, updatePost } from '../../actions/posts';
@@ -46,15 +45,26 @@ export default function Form({ currentId, setCurrentId }) {
 		}));
 	};
 
-	// if (!user?.userInfo?.name) {
-	// 	return (
-	// 		<Paper className={classes.paper}>
-	// 			<Typography variant='h6' align='center'>
-	// 				Please Sign In to create your notes.
-	// 			</Typography>
-	// 		</Paper>
-	// 	);
-	// }
+	const handleFileUpload = (e) => {
+		const file = e.target.files[0];
+		const reader = new FileReader();
+
+		reader.readAsDataURL(file);
+
+		reader.onloadend = () => {
+			setPostData({ ...postData, selectedFile: reader.result });
+		};
+	};
+
+	if (!user?.userInfo?.name) {
+		return (
+			<Paper className={classes.paper}>
+				<Typography variant='h6' align='center'>
+					Please Sign In to create your notes.
+				</Typography>
+			</Paper>
+		);
+	}
 
 	return (
 		<Paper className={classes.paper}>
@@ -83,11 +93,7 @@ export default function Form({ currentId, setCurrentId }) {
 				/>
 
 				<div className={classes.fileInput}>
-					{/* <FileBase
-						type='file'
-						multiple={false}
-						onDone={(file) => setPostData({ ...postData, selectedFile: file.base64 })}
-					/> */}
+					<input type='file' accept='image/*' onChange={(e) => handleFileUpload(e)} />
 				</div>
 
 				<Button
