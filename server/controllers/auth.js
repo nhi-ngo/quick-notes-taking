@@ -19,12 +19,20 @@ export const signup = async (req, res, next) => {
 			name: `${firstName} ${lastName}`,
 			email: email,
 		});
+
 		const token = jwt.sign({ email: newUser.email, id: newUser._id }, process.env.JWT_KEY, {
 			expiresIn: '1h',
 		});
 
 		await newUser.save();
-		res.status(200).json({ userInfo: newUser, token });
+		res.status(200).json({
+			userInfo: {
+				_id: newUser._id,
+				email: newUser.email,
+				name: newUser.name,
+			},
+			token,
+		});
 	} catch (error) {
 		next(error);
 	}
