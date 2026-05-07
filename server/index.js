@@ -12,13 +12,6 @@ dotenv.config();
 
 mongoose.set('strictQuery', true);
 
-const connect = () => {
-	mongoose
-		.connect(process.env.MONGO_URI)
-		.then(() => console.log('Connected to DB'))
-		.catch((err) => console.log(err));
-};
-
 app.use(cors());
 app.use(cookieParser());
 app.use(express.json({ limit: '30mb' }));
@@ -29,9 +22,15 @@ app.use('/auth', authRoutes);
 
 app.get('/', (req, res) => res.send('Hello to Notes API'));
 
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT;
 
-app.listen(PORT, () => {
-	connect();
-	console.log(`Server running on port ${PORT}`);
-});
+mongoose
+	.connect(process.env.MONGO_URI)
+	.then(() => {
+		app.listen(PORT, () => {
+			console.log(`Server running on port ${PORT}`);
+		});
+	})
+	.catch((error) => {
+		console.log(error);
+	});

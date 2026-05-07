@@ -18,7 +18,7 @@ export const createPost = (post) => async (dispatch) => {
 
 		dispatch({ type: CREATE_POST, payload: response.data });
 	} catch (error) {
-		console.log(error);
+		console.error(error.response?.data || error.message);
 	}
 };
 
@@ -28,7 +28,7 @@ export const updatePost = (id, post) => async (dispatch) => {
 
 		dispatch({ type: UPDATE_POST, payload: response.data });
 	} catch (error) {
-		console.log(error);
+		console.error(error.response?.data || error.message);
 	}
 };
 
@@ -38,6 +38,6 @@ export const deletePost = (id) => async (dispatch) => {
 
 		dispatch({ type: DELETE_POST, payload: id });
 	} catch (error) {
-		console.log(error);
+		console.error(error.response?.data || error.message);
 	}
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid } from '@mui/material';
+import { Grid, CircularProgress } from '@mui/material';
 import { useSelector } from 'react-redux';
 import Post from './Post/Post';
 
@@ -10,9 +10,13 @@ export default function Posts({ setCurrentId }) {
 
 	const classes = useStyles();
 
+	if (!posts.length) {
+		return <CircularProgress />;
+	}
+
 	return (
 		<Grid className={classes.mainContainer} container alignItems='stretch' spacing={3}>
-			{posts?.map((post) => (
+			{posts.map((post) => (
 				<Grid key={post._id} item xs={12} sm={6}>
 					<Post post={post} setCurrentId={setCurrentId} />
 				</Grid>
