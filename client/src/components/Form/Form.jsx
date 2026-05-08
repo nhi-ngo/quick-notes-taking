@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useState, useEffect } from 'react';
-import { TextField, Button, Typography, Paper } from '@mui/material';
+import { TextField, Button, Typography, Paper, Stack } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { createPost, updatePost } from '../../actions/posts';
@@ -67,49 +67,50 @@ export default function Form({ currentId, setCurrentId }) {
 	}
 
 	return (
-		<Paper className={classes.paper}>
-			<form autoComplete='off' className={`${classes.form} ${classes.root}`} onSubmit={onFormSubmit}>
-				<Typography variant='h6'>{currentId ? 'Editing' : 'Creating'} a Note</Typography>
+		<Paper sx={{ p: 2 }}>
+			<form autoComplete='off' onSubmit={onFormSubmit}>
+				<Typography variant='h6' sx={{ mb: 2, textAlign: 'center' }}>
+					{currentId ? 'Editing' : 'Creating'} a Note
+				</Typography>
 
-				<TextField
-					name='title'
-					label='Title'
-					variant='outlined'
-					fullWidth
-					value={postData.title}
-					onChange={onInputChange}
-					required
-				/>
-				<TextField
-					name='message'
-					label='Message'
-					variant='outlined'
-					fullWidth
-					multiline
-					rows={4}
-					value={postData.message}
-					onChange={onInputChange}
-					required
-				/>
+				<Stack spacing={2}>
+					<TextField
+						name='title'
+						label='Title'
+						variant='outlined'
+						fullWidth
+						value={postData.title}
+						onChange={onInputChange}
+						required
+					/>
+					<TextField
+						name='message'
+						label='Message'
+						variant='outlined'
+						fullWidth
+						multiline
+						rows={4}
+						value={postData.message}
+						onChange={onInputChange}
+						required
+					/>
+				</Stack>
 
+				{/* File Upload */}
 				<div className={classes.fileInput}>
 					<input type='file' accept='image/*' onChange={(e) => handleFileUpload(e)} />
 				</div>
 
-				<Button
-					className={classes.buttonSubmit}
-					variant='contained'
-					color='primary'
-					size='large'
-					type='submit'
-					fullWidth
-				>
-					Submit
-				</Button>
+				{/* Action Buttons */}
+				<Stack spacing={1}>
+					<Button variant='contained' color='primary' size='large' type='submit' fullWidth>
+						Submit
+					</Button>
 
-				<Button variant='contained' color='secondary' size='large' fullWidth onClick={onFormClear}>
-					Clear
-				</Button>
+					<Button variant='contained' color='secondary' size='large' fullWidth onClick={onFormClear}>
+						Clear
+					</Button>
+				</Stack>
 			</form>
 		</Paper>
 	);

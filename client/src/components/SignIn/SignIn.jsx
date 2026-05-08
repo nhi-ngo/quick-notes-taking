@@ -1,5 +1,4 @@
-import { Avatar, Button, Container, Grid, Paper, Typography } from '@mui/material';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import { Button, Container, Grid, Paper, Typography, Stack } from '@mui/material';
 import { signInWithPopup } from 'firebase/auth';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -26,7 +25,9 @@ const SignIn = () => {
 	const [form, setForm] = useState(initialState);
 	const [isSignup, setIsSignup] = useState(false);
 	const [showPassword, setShowPassword] = useState(false);
-	const handleShowPassword = () => setShowPassword(!showPassword);
+	const handleShowPassword = () => {
+		setShowPassword((prev) => !prev);
+	};
 
 	const switchMode = () => {
 		setForm(initialState);
@@ -69,22 +70,23 @@ const SignIn = () => {
 
 	return (
 		<Container component='main' maxWidth='xs'>
-			<Paper className={classes.paper} elevation={3}>
-				<Avatar className={classes.avatar}>{/* <LockOutlinedIcon /> */}</Avatar>
-
-				<Typography component='h1' variant='h5'>
+			<Paper className={classes.paper} sx={{ padding: 2, borderRadius: 3 }}>
+				<Typography component='h1' variant='h5' sx={{ paddingBottom: 1 }}>
 					{isSignup ? 'Sign up' : 'Sign in'}
 				</Typography>
 
 				<form className={classes.form} onSubmit={handleSubmit}>
-					<Grid container spacing={2}>
+					<Stack spacing={2}>
 						{isSignup && (
-							<>
-								<Input name='firstName' label='First Name' handleChange={handleChange} autoFocus half />
-								<Input name='lastName' label='Last Name' handleChange={handleChange} half />
-							</>
+							<Stack direction='row' spacing={2}>
+								<Input name='firstName' label='First Name' handleChange={handleChange} autoFocus />
+
+								<Input name='lastName' label='Last Name' handleChange={handleChange} />
+							</Stack>
 						)}
+
 						<Input name='email' label='Email Address' handleChange={handleChange} type='email' />
+
 						<Input
 							name='password'
 							label='Password'
@@ -92,30 +94,19 @@ const SignIn = () => {
 							type={showPassword ? 'text' : 'password'}
 							handleShowPassword={handleShowPassword}
 						/>
-					</Grid>
 
-					<Button type='submit' fullWidth variant='contained' color='primary' className={classes.submit}>
-						{isSignup ? 'Sign Up' : 'Sign In'}
-					</Button>
+						<Button type='submit' fullWidth variant='contained' color='primary' className={classes.submit}>
+							{isSignup ? 'Sign Up' : 'Sign In'}
+						</Button>
 
-					<Button
-						className={classes.googleButton}
-						color='primary'
-						fullWidth
-						onClick={signInWithGoogle}
-						startIcon={<Icon />}
-						variant='contained'
-					>
-						Google Sign In
-					</Button>
+						<Button fullWidth onClick={signInWithGoogle} variant='contained' className={classes.googleButton}>
+							Google Sign In
+						</Button>
 
-					<Grid container justifyContent='flex-end'>
-						<Grid item>
-							<Button onClick={switchMode}>
-								{isSignup ? 'Already have an account? Sign in' : "Don't have an account? Sign Up"}
-							</Button>
-						</Grid>
-					</Grid>
+						<Button onClick={switchMode}>
+							{isSignup ? 'Already have an account? Sign in' : "Don't have an account? Sign Up"}
+						</Button>
+					</Stack>
 				</form>
 			</Paper>
 		</Container>

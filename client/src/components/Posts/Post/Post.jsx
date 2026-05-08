@@ -1,4 +1,11 @@
-import { Button, Card, CardActions, CardContent, CardMedia, IconButton, Typography } from '@mui/material';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import CardActionArea from '@mui/material/CardActionArea';
+import CardActions from '@mui/material/CardActions';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import moment from 'moment';
@@ -14,38 +21,38 @@ export default function Post({ post, setCurrentId }) {
 	const user = JSON.parse(localStorage.getItem('profile'));
 
 	return (
-		<Card className={classes.card}>
-			<CardMedia
-				className={classes.media}
-				title={post.title}
-				image={
-					post.selectedFile ||
-					'https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png'
-				}
-			/>
+		<Card className={classes.card} sx={{ maxWidth: 300 }}>
+			<CardActionArea>
+				<CardMedia
+					className={classes.media}
+					title={post.title}
+					image={
+						post.selectedFile ||
+						'https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png'
+					}
+				/>
+				<CardContent>
+					<Typography gutterBottom variant='h6' component='div'>
+						{post.title}
+					</Typography>
+					<Typography variant='body2' color='textSecondary' component='p'>
+						{post.message}
+					</Typography>
+				</CardContent>
+			</CardActionArea>
 
 			<div className={classes.overlay1}>
 				<Typography variant='h6'>{post.name}</Typography>
 				<Typography variant='body2'>{moment(post.createdAt).fromNow()}</Typography>
 			</div>
 
-			{(user?.userInfo?._id === post?.author || user?.userInfo?.googleUserId === post?.author) && (
-				<div className={classes.overlay2}>
+			<div className={classes.overlay2}>
+				{(user?.userInfo?._id === post?.author || user?.userInfo?.googleUserId === post?.author) && (
 					<IconButton style={{ color: 'white' }} size='small' onClick={() => setCurrentId(post._id)}>
 						<MoreVertIcon />
 					</IconButton>
-				</div>
-			)}
-
-			<Typography className={classes.title} variant='h5' gutterBottom>
-				{post.title}
-			</Typography>
-
-			<CardContent>
-				<Typography variant='body2' color='textSecondary' component='p'>
-					{post.message}
-				</Typography>
-			</CardContent>
+				)}
+			</div>
 
 			<CardActions className={classes.cardActions}>
 				{(user?.userInfo?._id === post?.author || user?.userInfo?.googleUserId === post?.author) && (

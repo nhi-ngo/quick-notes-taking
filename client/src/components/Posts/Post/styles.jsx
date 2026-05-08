@@ -11,7 +11,7 @@ export default makeStyles({
 	},
 
 	media: {
-		// height: 0,
+		height: 0,
 		paddingTop: '56.5%',
 		backgroundColor: 'rgba(0, 0, 0, 0.4)',
 		backgroundBlendMode: 'darken',
@@ -29,10 +29,6 @@ export default makeStyles({
 		top: '20px',
 		right: '20px',
 		color: 'white',
-	},
-
-	title: {
-		padding: '16px 16px 0 16px',
 	},
 
 	cardActions: {

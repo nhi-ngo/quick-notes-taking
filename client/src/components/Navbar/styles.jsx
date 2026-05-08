@@ -10,31 +10,32 @@ export default makeStyles((theme) => ({
 		alignItems: 'center',
 		padding: '10px 50px',
 	},
+	toolbar: {
+		display: 'flex',
+		alignItems: 'center',
+		width: '100%',
+	},
+	brandContainer: {
+		display: 'flex',
+		alignItems: 'center',
+	},
 	heading: {
 		color: '#F7C652',
-		fontFamily: 'Hachi Maru Pop',
 		marginTop: '-15px',
 		textDecoration: 'none',
-
-		// [theme.breakpoints.down('md')]: {
-		// 	fontSize: '3rem',
-		// },
-
-		// [theme.breakpoints.down('sm')]: {
-		// 	fontSize: '2.5rem',
-		// },
 	},
 	image: {
 		marginLeft: '15px',
 	},
-	toolbar: {
-		display: 'flex',
-		justifyContent: 'flex-end',
-		width: '400px',
+
+	grow: {
+		flexGrow: 1,
 	},
+
 	profile: {
 		display: 'flex',
-		justifyContent: 'flex-end',
+		alignItems: 'center',
+		gap: '12px',
 	},
 	userName: {
 		display: 'flex',
@@ -42,13 +43,4 @@ export default makeStyles((theme) => ({
 		marginLeft: '10px',
 		marginRight: '10px',
 	},
-	brandContainer: {
-		display: 'flex',
-		alignItems: 'center',
-	},
-	// [theme.breakpoints.down('sm')]: {
-	// 	mainContainer: {
-	// 		flexDirection: 'column-reverse',
-	// 	},
-	// },
 }));
