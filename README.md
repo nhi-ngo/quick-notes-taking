@@ -1,6 +1,6 @@
 # **Quick Notes**
 
-### Quick-Notes application allows users to capture quick thoughts that they come across in order to revisit later
+A full-stack note-taking and sharing application built with the MERN stack. Users can create, edit, delete, and like notes, upload images, and sign in using email/password or Google OAuth. The app is deployed on cloud platforms.
 
 <table>
   <tr>
@@ -13,23 +13,26 @@
     </tr>
 </table>
 
-**[See it live!](https://quick-notes-client.netlify.app/)**
+# **Live Demo**
 
-# **Server**
-
-This app works in conjunction with a backend server: https://quik-notes-api.herokuapp.com/
+- Frontend: <https://quick-notes-taking.vercel.app/>
+- Backend: <https://quick-notes-taking.onrender.com/>
 
 # **Tech**
 
-- React
+- React, Redux, Material UI
 - MongoDB
-- Express
-- Node
+- Express, Node
+- JWT Authentication
 
 # **Features**
 
-# **Features**
+- User authentication (JWT + Google OAuth)
+- Create, edit, delete notes
+- Image upload (Base64)
 
-- Create/Edit/Update/Delete a note
-- Upload an image from local computer
-- Log in using Google email account
+# **Deployment**
+
+- Frontend deployed on Vercel
+- Backend deployed on Render
+- MongoDB hosted on Atlas
