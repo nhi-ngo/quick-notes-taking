@@ -11,6 +11,8 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import moment from 'moment';
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { useState } from 'react';
+import { summarizePost } from '../../../api';
 
 import { deletePost } from '../../../actions/posts';
 import useStyles from './styles';
@@ -19,6 +21,16 @@ export default function Post({ post, setCurrentId }) {
 	const classes = useStyles();
 	const dispatch = useDispatch();
 	const user = JSON.parse(localStorage.getItem('profile'));
+
+	const [summary, setSummary] = useState('');
+	const [loading, setLoading] = useState(false);
+
+	const handleSummarize = async () => {
+		setLoading(true);
+		const { data } = await summarizePost(post.message);
+		setSummary(data.summary);
+		setLoading(false);
+	};
 
 	return (
 		<Card className={classes.card} sx={{ maxWidth: 300 }}>
@@ -40,6 +52,15 @@ export default function Post({ post, setCurrentId }) {
 					</Typography>
 				</CardContent>
 			</CardActionArea>
+
+			<button onClick={handleSummarize} disabled={loading}>
+				{loading ? 'Summarizing...' : '✨ Summarize'}
+			</button>
+			{summary && (
+				<Typography variant='body2' component='p' style={{ padding: '8px' }}>
+					<strong>Summary:</strong> {summary}
+				</Typography>
+			)}
 
 			<div className={classes.overlay1}>
 				<Typography variant='h6'>{post.name}</Typography>
